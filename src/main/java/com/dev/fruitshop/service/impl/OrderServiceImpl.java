@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService {
             throw new NotEnoughFruitsInStock("Not enough fruit in stock");
         }
         for (int i = 0; i < order.getAmount(); i++) {
-            orderDao.changeMoneyBalance(fruits.get(0).getPrice());
+            orderDao.changeMoneyBalance(fruits.get(i).getPrice());
             fruitService.remove(fruits.get(i));
         }
         return order;

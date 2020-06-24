@@ -8,9 +8,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class CreateOrderFileController {
-    private static final String FILE_PATH = "src/jsonSource/orders.json";
 
-    public static void createFile() {
+    public static void createFile(String filePath) {
         List<Order> orders = InitOrderController.init();
         JSONArray orderList = new JSONArray();
         for (Order order : orders) {
@@ -23,7 +22,7 @@ public class CreateOrderFileController {
             orderObject.put("order", orderDetails);
             orderList.add(orderObject);
         }
-        try (FileWriter file = new FileWriter(FILE_PATH)) {
+        try (FileWriter file = new FileWriter(filePath)) {
             file.write(orderList.toJSONString());
             file.flush();
         } catch (IOException e) {

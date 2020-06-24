@@ -12,13 +12,12 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class LoadOrderFileController {
-    private static final String FILE_PATH = "src/jsonSource/orders.json";
 
-    public static List<Order> readFile() {
+    public static List<Order> readFile(String filePath) {
         JSONParser jsonParser = new JSONParser();
         List<Order> orders = new ArrayList<>();
 
-        try (FileReader reader = new FileReader(FILE_PATH)) {
+        try (FileReader reader = new FileReader(filePath)) {
             Object obj = jsonParser.parse(reader);
             JSONArray orderList = (JSONArray) obj;
             orderList.forEach(f -> orders.add(parseOrderObject((JSONObject)f)));

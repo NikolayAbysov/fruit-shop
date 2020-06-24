@@ -10,10 +10,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class CreateFruitFileController {
-    private static final String FILE_PATH = "src/jsonSource/fruits.json";
     private static final FruitService fruitService = new FruitServiceImpl();
 
-    public static void createFile() {
+    public static void createFile(String filePath) {
         List<Fruit> fruits = fruitService.getFruitStock();
         JSONArray fruitList = new JSONArray();
         for (Fruit fruit : fruits) {
@@ -27,7 +26,7 @@ public class CreateFruitFileController {
             fruitObject.put("fruits", fruitDetails);
             fruitList.add(fruitObject);
         }
-        try (FileWriter file = new FileWriter(FILE_PATH)) {
+        try (FileWriter file = new FileWriter(filePath)) {
 
             file.write(fruitList.toJSONString());
             file.flush();

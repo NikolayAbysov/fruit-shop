@@ -13,13 +13,12 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class LoadFruitFileController {
-    private static final String FILE_PATH = "src/jsonSource/fruits.json";
 
-    public static List<Fruit> readFile() {
+    public static List<Fruit> readFile(String filePath) {
         JSONParser jsonParser = new JSONParser();
         List<Fruit> fruits = new ArrayList<>();
 
-        try (FileReader reader = new FileReader(FILE_PATH)) {
+        try (FileReader reader = new FileReader(filePath)) {
             Object obj = jsonParser.parse(reader);
             JSONArray fruitList = (JSONArray) obj;
             fruitList.forEach(f -> fruits.add(parseFruitObject((JSONObject)f)));
