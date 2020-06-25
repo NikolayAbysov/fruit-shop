@@ -20,7 +20,7 @@ class OrderServiceTest {
     @BeforeEach
     void init() {
         fruitService = new FruitServiceImpl();
-        fruitService.addList(LoadFruitFileController.readFile());
+        fruitService.addList(LoadFruitFileController.readFile("src/jsonSource/fruits.json"));
         order = new Order();
         order.setAmount(1);
         order.setCustomerName("Shion");
