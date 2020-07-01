@@ -1,0 +1,13 @@
+1. select city, max(grade) from customer group by city;
+
+2. select customer_id, ord_date, max(purch_amt) from orders group by customer_id, ord_date
+
+3. select customer_id, ord_date, max(purch_amt) from  orders group by ord_date, customer_id having max(purch_amt) between 2000 and 6000;
+
+4. select customer.*, salesman.* from customer inner join salesman on customer.salesman_id = salesman.salesman_id where salesman.commission > 0.12
+
+5. select customer.*, salesman.* from customer inner join salesman on customer.salesman_id = salesman.salesman_id order by customer_id;
+
+6. select customer.*, salesman.* from customer inner join salesman on customer.salesman_id = salesman.salesman_id where grade < 300 order by customer_id;
+
+7. select emp_department.dpt_name from emp_department inner join emp_details on dpt_code = emp_dept group by emp_department.dpt_name having COUNT(1) > 2
